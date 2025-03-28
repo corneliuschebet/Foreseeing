@@ -1,5 +1,5 @@
-// Base URL for local JSON server
-const BASE_URL = "http://localhost:3000/cities";
+// Base URL for the deployed JSON server
+const BASE_URL = "https://my-app-backend-6dtd.onrender.com/cities";
 
 // DOM Elements
 const searchInput = document.getElementById("search-input");
@@ -13,7 +13,7 @@ const updateCityButton = document.getElementById("update-city-button");
 // Fetch weather data from JSON server
 async function fetchWeather(city) {
     try {
-        const response = await fetch(`${BASE_URL}?name=${city}`);
+        const response = await fetch(`${BASE_URL}?name=${encodeURIComponent(city)}`);
         if (!response.ok) throw new Error("Failed to fetch data");
 
         const data = await response.json();
