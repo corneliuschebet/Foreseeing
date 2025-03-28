@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foreseeing - Smart Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Foreseeing - Smart Weather Dashboard</h1>
+        </header>
+        
+        <main>
+            <section class="search-box">
+                <label for="search-input" class="visually-hidden">Enter city name</label>
+                <input type="text" id="search-input" placeholder="Enter city name..." aria-label="City name input">
+                <button id="search-button" aria-label="Search weather">Search</button>
+            </section>
+
+            <section id="weather-container" class="weather-box">
+                <h2>Weather Information</h2>
+                <p>Search for a city to display weather details.</p>
+            </section>
+
+            <section id="forecast-container" class="forecast-box">
+                <h2>5-Day Forecast</h2>
+            </section>
+        </main>
+
+        <footer>
+            <div class="buttons">
+                <button id="add-city-button" aria-label="Add new city">Add City</button>
+                <button id="update-city-button" aria-label="Update city weather">Update City</button>
+            </div>
+        </footer>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
