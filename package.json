@@ -4,17 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "react-scripts": "^5.0.1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/corneliuschebet/Foreseeing.git"
+    "url": "https://github.com/corneliuschebet/Foreseeing.git"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/corneliuschebet/Foreseeing/issues"
-  },
-  "homepage": "https://github.com/corneliuschebet/Foreseeing#readme"
+  "license": "ISC"
 }
