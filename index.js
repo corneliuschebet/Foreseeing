@@ -1,7 +1,5 @@
-// Base URL for the deployed JSON server
 const BASE_URL = "https://my-app-backend-6dtd.onrender.com/cities";
 
-// DOM Elements
 const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
 const weatherContainer = document.getElementById("weather-container");
@@ -10,7 +8,6 @@ const background = document.body;
 const addCityButton = document.getElementById("add-city-button");
 const updateCityButton = document.getElementById("update-city-button");
 
-// Fetch weather data from JSON server
 async function fetchWeather(city) {
     try {
         const response = await fetch(`${BASE_URL}?name=${encodeURIComponent(city)}`);
@@ -28,7 +25,6 @@ async function fetchWeather(city) {
     }
 }
 
-// Display weather data
 function displayWeather(weatherData) {
     const { id, name, temperature, windSpeed, condition, forecast } = weatherData;
     weatherContainer.innerHTML = `
@@ -41,7 +37,6 @@ function displayWeather(weatherData) {
     displayForecast(forecast);
 }
 
-// Display 5-day forecast
 function displayForecast(forecast) {
     forecastContainer.innerHTML = `<h2>5-Day Forecast</h2>`;
     forecastContainer.innerHTML += forecast.map(day => `
@@ -53,7 +48,6 @@ function displayForecast(forecast) {
     `).join('');
 }
 
-// Update background based on weather condition
 function updateBackground(condition) {
     const backgrounds = {
         "Sunny": "url('images/clear.jpg')",
@@ -64,7 +58,6 @@ function updateBackground(condition) {
     background.style.backgroundImage = backgrounds[condition] || "url('images/default.jpg')";
 }
 
-// Add new city with weather data
 async function addCity(city, temperature, windSpeed, condition, forecast) {
     const newCity = { name: city, temperature, windSpeed, condition, forecast };
     try {
@@ -83,7 +76,6 @@ async function addCity(city, temperature, windSpeed, condition, forecast) {
     }
 }
 
-// Update existing city's weather data
 async function updateCity(id, updatedData) {
     try {
         const response = await fetch(`${BASE_URL}/${id}`, {
@@ -101,7 +93,6 @@ async function updateCity(id, updatedData) {
     }
 }
 
-// Event Listeners
 searchButton.addEventListener("click", () => {
     const city = searchInput.value.trim();
     if (city) fetchWeather(city);
@@ -146,5 +137,4 @@ updateCityButton.addEventListener("click", () => {
     }
 });
 
-// Initial load with a default city
 fetchWeather("New York");
