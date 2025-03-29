@@ -32,6 +32,7 @@ function displayWeather(weatherData) {
         <p><strong>Temperature:</strong> ${temperature}°C</p>
         <p><strong>Wind Speed:</strong> ${windSpeed} km/h</p>
         <p><strong>Condition:</strong> ${condition}</p>
+        <button onclick="deleteCity('${id}')">Delete City</button>
     `;
     updateBackground(condition);
     displayForecast(forecast);
@@ -67,7 +68,9 @@ async function addCity(city, temperature, windSpeed, condition, forecast) {
             body: JSON.stringify(newCity)
         });
         if (response.ok) {
+            const addedCity = await response.json();
             alert("City added successfully!");
+            displayWeather(addedCity);
         } else {
             alert("Failed to add city.");
         }
@@ -90,6 +93,23 @@ async function updateCity(id, updatedData) {
         }
     } catch (error) {
         console.error("Error updating city:", error);
+    }
+}
+
+async function deleteCity(id) {
+    try {
+        const response = await fetch(`${BASE_URL}/${id}`, {
+            method: "DELETE"
+        });
+        if (response.ok) {
+            alert("City deleted successfully!");
+            weatherContainer.innerHTML = "";
+            forecastContainer.innerHTML = "";
+        } else {
+            alert("Failed to delete city. Check if the city exists.");
+        }
+    } catch (error) {
+        console.error("Error deleting city:", error);
     }
 }
 
